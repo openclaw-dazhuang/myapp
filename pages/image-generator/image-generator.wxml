@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="title">🤖 AI 图像生成</view>
+  
+  <textarea 
+    class="input-area" 
+    placeholder="输入描述 prompt，如：一只可爱的橘猫" 
+    value="{{prompt}}" 
+    bindinput="onInput"
+    maxlength="500"
+  ></textarea>
+
+  <button 
+    class="generate-btn" 
+    bindtap="generateImage" 
+    loading="{{loading}}"
+  >
+    {{loading ? '生成中...' : '生成图片'}}
+  </button>
+
+  <view wx:if="{{error}}" class="error">{{error}}</view>
+
+  <view wx:if="{{imageUrl}}" class="result">
+    <image class="result-image" src="{{imageUrl}}" mode="aspectFit" show-menu-by-longpress></image>
+    <button class="save-btn" bindtap="saveImage" wx:if="{{imageUrl}}">保存到相册</button>
+  </view>
+</view>

@@ -1,8 +1,23 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/image-generator/image-generator"
   ],
   "window": {
     "navigationBarTitleText": "我的小程序"
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#07c160",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/image-generator/image-generator",
+        "text": "AI 生图"
+      }
+    ]
   }
 }
