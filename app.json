@@ -19,5 +19,17 @@
         "text": "AI 生图"
       }
     ]
+  },
+  "permission": {
+    "scope.writePhotosAlbum": {
+      "desc": "保存图片到相册"
+    }
+  },
+  "request": {
+    "domain": "localhost",
+    "version": 2
+  },
+  "networkTimeout": {
+    "request": 60000
   }
 }

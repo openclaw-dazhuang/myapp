@@ -23,45 +23,21 @@ Page({
 
     try {
       const response = await wx.request({
-        url: 'https://openrouter.ai/api/v1/chat/completions',
+        url: 'http://localhost:3000/api/generate-image',
         method: 'POST',
         header: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${getApp().globalData.openRouterApiKey}`,
-          'HTTP-Referer': 'https://github.com/openclaw-dazhuang/myapp',
-          'X-Title': 'My WeApp'
+          'Content-Type': 'application/json'
         },
-        data: {
-          model: 'google/gemini-2.5-flash-image-preview',
-          messages: [
-            {
-              role: 'user',
-              content: [
-                { type: 'text', text: prompt }
-              ]
-            }
-          ],
-          extra_json: {
-            "responseModalities": "image"
-          }
-        }
+        data: { prompt }
       })
 
       console.log('API response:', response.data)
 
-      if (response.data.choices && response.data.choices[0]) {
-        const content = response.data.choices[0].message.content
-        if (Array.isArray(content)) {
-          for (const item of content) {
-            if (item.type === 'image') {
-              this.setData({ imageUrl: item.url })
-              break
-            }
-          }
-        }
-      }
-
-      if (!this.data.imageUrl) {
+      if (response.data.error) {
+        this.setData({ error: response.data.error })
+      } else if (response.data.imageUrl) {
+        this.setData({ imageUrl: response.data.imageUrl })
+      } else {
         this.setData({ error: '未能生成图片，请重试' })
       }
     } catch (err) {

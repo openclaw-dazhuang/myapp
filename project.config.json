@@ -34,8 +34,7 @@
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true,
-    "minifyWXML": true
+    "minifyWXSS": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.19.0",
